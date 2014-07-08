@@ -15,9 +15,10 @@ from models.connection import connect
 
 connect()
 
-from models.users import User, Photo
+from models.users import User, Photo, Video
 
 sync_table(User)
 sync_table(Photo)
+sync_table(Video)
 
 nose.run()

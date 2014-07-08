@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models.users import User, Photo
+from models.users import User, Photo, Video, Content
 
 
 class GetPhotosTest(TestCase):
@@ -21,3 +21,11 @@ def test_clustering():
 
     for x in Photo.objects(user_id=me.user_id):
         print x.name
+
+def test_polymorphism():
+    me = User.create(name="pete")
+    Photo.create(user_id=me.user_id, name="sunset")
+    Video.create(user_id=me.user_id, name="kickball")
+
+    for content in Video.objects(user_id=me.user_id):
+        print content
