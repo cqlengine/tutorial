@@ -14,4 +14,10 @@ class GetPhotosTest(TestCase):
         assert len(photos) == 1
 
 
+def test_clustering():
+    me = User.create(name="Jon")
+    for x in range(10):
+        Photo.create(user_id=me.user_id, name=str(x))
 
+    for x in Photo.objects(user_id=me.user_id):
+        print x.name
