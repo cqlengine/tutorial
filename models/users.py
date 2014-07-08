@@ -10,7 +10,9 @@ class User(Model):
 class Photo(Model):
     # we're using a clustering key
     user_id = UUID(primary_key=True)
-    photo_id = UUID(primary_key=True, default=uuid1)
+
+    # now rows inside partition are ordered by the timestamp inside the photo_id
+    photo_id = TimeUUID(primary_key=True, default=uuid1)
     name = Text()
     url = Text()
 

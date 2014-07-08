@@ -14,3 +14,4 @@ class GetPhotosTest(TestCase):
         assert len(photos) == 1
 
 
+
